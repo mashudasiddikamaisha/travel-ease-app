@@ -53,7 +53,8 @@ const router = createBrowserRouter([
             path: "/vehicleDetails/:id",
             element: <PrivateRoute>
                 <VehicleDetails></VehicleDetails>
-            </PrivateRoute>
+            </PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:3000/vehicles/${params.id}`).then(res => res.json())
         },
         {
             path: "/updateVehicle/:id",
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
         {
             path: "/vehicles",
             element: <AllVehicles></AllVehicles>,
-            
+
         },
     ]
   },
